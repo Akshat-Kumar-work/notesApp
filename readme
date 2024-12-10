@@ -1,12 +1,23 @@
-to install the packages locally within your project , use virtual env to prevent global installations
+# Create a virtual environment
+```
 python -m venv venv
+```
 
-activate the virtual env in powershell
+# Activate the virtual environment in PowerShell
+```
 .\venv\Scripts\activate
-in cmd
+```
+
+# Or in CMD
+```
 venv\Scripts\activate.bat
+```
 
 
-install 2 packages in your virtual env
+#Install required packages
+```
 pip install fastapi
+```
+```
 pip install uvicorn[standard]
+```
