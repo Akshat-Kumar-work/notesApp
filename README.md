@@ -14,10 +14,15 @@ venv\Scripts\activate.bat
 ```
 
 
-#Install required packages
+# Install required packages
 ```
 pip install fastapi
 ```
 ```
 pip install uvicorn[standard]
+```
+
+# To start the server
+```
+
 ```
