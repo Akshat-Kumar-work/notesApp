@@ -3,6 +3,8 @@ from fastapi import FastAPI ,Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from pymongo import MongoClient
+import os
 
 #initializing fastapi application
 app = FastAPI()
@@ -13,6 +15,21 @@ app.mount('/static',StaticFiles(directory="static"),name="static")
 
 #the jinjs2templates redner the html page dynamically
 templates = Jinja2Templates(directory="templates")
+
+#accessing env variables via os
+DATABASE_URL= os.getenv("DB_URL")
+
+
+#initialize db connection
+dbConnnection = MongoClient(DATABASE_URL)
+
+@app.get("/db")
+async def readDb(request:Request):
+    docs = dbConnnection.fastapi.learningfastapi.find({})
+    for doc in docs:
+        print(doc)
+    return ("all good")
+
 
 #here html response specify that response will be in html format
 @app.get("/",response_class=HTMLResponse)
